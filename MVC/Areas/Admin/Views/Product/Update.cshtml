@@ -1,0 +1,55 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-6">
+<section class="panel">
+    <header class="panel-heading">
+        Kategori Ekle
+    </header>
+    <div class="panel-body">
+        <form role="form" method="post">
+            <div class="form-group">
+                <label>Ürün Ad</label>
+                @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Fiyatı</label>
+                @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Stok Miktarı</label>
+                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Kategori</label>
+
+                <select class="form-control input-lg m-bot15" name="SubCategoryId">
+                    @foreach (SubCategory subCategory in ViewBag.SubCategories)
+                    {
+                        <option value="@subCategory.ID">@subCategory.SubCategoryName</option>
+                    }
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Tedarikçi</label>
+
+                <select class="form-control input-lg m-bot15" name="SupplierId">
+                    @foreach (Supplier supplier in ViewBag.Suppliers)
+                    {
+                        <option value="@supplier.ID">@supplier.CompanyName</option>
+                    }
+
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-info">Güncelle</button>
+        </form>
+
+    </div>
+</section>
+</div>
+

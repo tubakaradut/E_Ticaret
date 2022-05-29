@@ -1,0 +1,116 @@
+﻿
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        @{if (TempData["info"] != null)
+            {
+                <div class="alert alert-success alert-block fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <h4>
+                        <i class="icon-ok-sign"></i>
+                        Başarılı!
+                    </h4>
+                    <p>@TempData["info"]</p>
+                </div>
+            }
+            else if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger alert-block fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <h4>
+                        <i class="icon-remove"></i>
+                        Hata!
+                    </h4>
+                    <p>@TempData["error"]</p>
+                </div>
+            }
+
+        }
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2>Ürün Listesi</h2>
+                    </div>
+                    <div class="col-md-3 ">
+
+                        @Html.ActionLink("Ürün Ekle", "Create", null, new { @class = "btn btn-success pull-right" })
+                    </div>
+                </div>
+            </header>
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                    <tr>
+                        <th>Görsel</th>
+                        <th>Ürün Adı</th>
+                        <th>Fiyat</th>
+                        <th>Stok</th>
+                        <th>Kategori</th>
+                        <th>Tedarikçi</th>
+                        <th>Durum</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+
+                            <td width="50px">
+                                <img src="~/Content/image/product/@product.ProductImagePath" style="width:100px; height:100px" />
+                            </td>
+                            <td>
+                                @Html.ActionLink(product.ProductName, "Details", new { id = product.ID })
+                            </td>
+                            <td>
+                                @product.UnitPrice
+                            </td>
+                            <td>
+                                @product.UnitsInStock
+                            </td>
+                            <td>@product.SubCategory.SubCategoryName</td>
+                            <td>@product.Supplier.CompanyName</td>
+                            <td>
+
+                                @switch (product.Status)
+                                {
+                                    case Core.Enums.Status.None:
+                                        <span class="label label-info label-mini">@product.Status.ToString()</span>
+                                        break;
+                                    case Core.Enums.Status.Active:
+                                        <span class="label label-success label-mini">@product.Status.ToString()</span>
+                                        break;
+                                    case Core.Enums.Status.Deleted:
+                                        <span class="label label-danger label-mini">@product.Status.ToString()</span>
+                                        break;
+                                    case Core.Enums.Status.Updated:
+                                        <span class="label label-warning label-mini">@product.Status.ToString()</span>
+                                        break;
+                                }
+                            </td>
+                            <td>
+                                <a href="/Admin/Product/Update/@product.ID" class="btn btn-primary btn-xs">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                                <a href="/Admin/Product/Delete/@product.ID" class="btn btn-danger btn-xs">
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+
+

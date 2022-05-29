@@ -1,0 +1,60 @@
+﻿@using System.Collections.Generic;
+@model List<OrderDetail>
+@{
+    ViewBag.Title = "CompleteCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal? totalPrice = 0;
+}
+
+
+<h1>Siparişiniz oluşturulmuştur. Sipariş Numaranız <strong>@ViewBag.OrderNumber</strong> ve siparişiniz: </h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Sub Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    totalPrice += item.Subtotal;
+                    <tr>
+
+                        <td>
+                            @item.Product.ProductName
+                        </td>
+                        <td>
+                            @item.Quantity
+                        </td>
+                        <td>
+                            @item.UnitPrice
+                        </td>
+                        <td>
+                            @item.Subtotal
+                        </td>
+
+                    </tr>
+                }
+                <tr>
+
+                    <td>
+                        <h5>Toplam Fiyat: @totalPrice TL</h5>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <div class="text-center">
+        @Html.ActionLink("Çıkış", "Exit", new { @class = "btn btn-outline-dark mt-auto" })
+    </div>
+</div>

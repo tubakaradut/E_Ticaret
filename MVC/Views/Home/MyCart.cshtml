@@ -1,0 +1,78 @@
+﻿@using MVC.Models;
+@{
+    ViewBag.Title = "MyCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Cart sessionCart = Session["kcart"] as Cart;
+    decimal? totalPrice = 0;
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Sub Total</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in sessionCart.mycart)
+                {
+                    totalPrice += item.SubTotal;
+                    <tr>
+                        <td>
+                            <img class="card-img myCart-img" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        </td>
+                        <td>
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @item.Quantity
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.SubTotal
+                        </td>
+                        <td>
+                            @Html.ActionLink("Sil", "DeleteCartItem", "Home", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Özet</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5>Genel Toplam: </h5>
+                    <h5>@totalPrice TL</h5>
+                </div>
+                <div class="col-md-12 mt-5">
+                    @{
+                        if (Session["kcart"] != null)
+                        {
+                            @Html.ActionLink("Alışverişi Tamamla", "CompleteCart", "Home", null, new { @class = "btn btn-primary" })
+                        }
+
+                        @Html.ActionLink("Devam Et", "Index", "Home", null, new { @class = "btn" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
