@@ -32,7 +32,7 @@ namespace MVC.Areas.Admin.Controllers
 
             // toplam kullanıcı
             int totalUserCount = userList.Count();
-            ViewBag.TotalUserCounut = totalUserCount;
+            ViewBag.TotalUserCount = totalUserCount;
 
             // en çok satışı yapılan ürün
             MostSalesProduct mostSalesProduct = orderDetailService.GetMostSalesProduct();
