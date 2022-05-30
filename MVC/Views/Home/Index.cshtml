@@ -1,52 +1,49 @@
-﻿@model List<Product>
+﻿
+
+@model List<DataAccess.Entity.Product>
 @{
     ViewBag.Title = "Index";
-Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@{
-    if (TempData["error"] != null)
-    {
-        <div class="alert alert-danger">
-            <span>@TempData["error"]</span>
-        </div>
-    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-    @foreach (var product in Model)
-    {
-        <div class="col mb-5">
-            <div class="card h-100">
-                <!-- Product image-->
-                <img class="card-img-top" src="https://st4.depositphotos.com/13324256/24475/i/450/depositphotos_244751462-stock-photo-top-view-product-lettering-made.jpg" alt="..." />
-                <!-- Product details-->
-                <div class="card-body p-4">
-                    <div class="text-center">
-                        <!-- Product name-->
-                        <h5 class="fw-bolder">@product.ProductName</h5>
-                        <!-- Product price-->
+<div class="row">
+    <div class="col-lg-9">
+        <div class="row product-list">
+            @foreach (var product in Model)
+            {
 
-                    </div>
-                    <div class="text-center">
-                        <span>Ürün Fiyat:@product.UnitPrice</span>
-                    </div>
-                    <div class="text-center">
-                        <span>Ürün Fiyat:@product.UnitsInStock</span>
-                    </div>
-                    <div class="text-center">
-                        <span>@product.SubCategory.SubCategoryName</span>
-                    </div>
+
+                <div class="col-md-4">
+                    <section class="panel">
+                        <div class="pro-img-box">
+                            @*@if (product.ProductImagePath != null)
+                            {
+                                <img src="~/Content/image/product/@product.ProductImagePath" alt="">
+                            }
+                            else
+                            {*@
+                                <img src="https://st4.depositphotos.com/13324256/24475/i/600/depositphotos_244751462-stock-photo-top-view-product-lettering-made.jpg" alt="">
+
+                            @*}*@
+                            <br />
+                            <a href="/Home/AddToCart/@product.ID" class="adtocart">
+                                <i class="icon-shopping-cart"></i>
+                            </a>
+                        </div>
+
+                        <div class="panel-body text-center">
+                            <h4>
+
+
+                                @Html.ActionLink(product.ProductName, "Details", "Product", new { id = product.ID }, new { @class = "pro-title" })
+                            </h4>
+                            <p class="price">$@product.UnitPrice</p>
+                            <p class="price">$@product.UnitsInStock</p>
+                        </div>
+                    </section>
                 </div>
-                <!-- Product actions-->
-                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center">
-                        @Html.ActionLink("Sepete Ekle", "AddToCart", new { id = product.ID }, new { @class = "btn btn-outline-dark mt-auto" })
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-    }
+    </div>
 </div>
-
-
 

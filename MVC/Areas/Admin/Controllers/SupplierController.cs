@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin,moderator")]
     public class SupplierController : Controller
     {
         SupplierService supplierService = new SupplierService();

@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="Context\ProjeContext.cs" />
     <Compile Include="Entity\AppUser.cs" />
+    <Compile Include="Entity\AppUserAndRole.cs" />
+    <Compile Include="Entity\AppUserRole.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\MostSalesProduct.cs" />
     <Compile Include="Entity\Order.cs" />
@@ -79,7 +81,6 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

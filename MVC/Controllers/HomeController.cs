@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    //[AuthFiter]
+  
     public class HomeController : Controller
     {
         ProductService productService = new ProductService();
@@ -81,7 +81,9 @@ namespace MVC.Controllers
         {
             Cart cart = Session["kcart"] as Cart;
             AppUser user = Session["user"] as AppUser;
+
             List<OrderDetail> orderDetailList = new List<OrderDetail>();
+
             if (user == null)
             {
                 return RedirectToAction("Index", "Login");
@@ -119,7 +121,7 @@ namespace MVC.Controllers
                     Product product = productService.GetById(item.Id);
                     product.UnitsInStock -= Convert.ToInt16(item.Quantity);
 
-                    productList += $" {item.ProductName} - {item.Price} - {item.SubTotal}";
+                    productList += $" Ürün Adı: {item.ProductName} -  Ürün Fiyatı: {item.Price} - Toplam Tutar: {item.SubTotal}";
                 }
 
                 Random rnd = new Random();

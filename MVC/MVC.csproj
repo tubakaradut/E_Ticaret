@@ -1742,10 +1742,6 @@
     <Content Include="Content\widget.html" />
     <Content Include="Content\xchart.html" />
     <Content Include="Global.asax" />
-    <Content Include="KContent\assets\favicon.ico" />
-    <Content Include="KContent\css\styles.css" />
-    <Content Include="KContent\index.html" />
-    <Content Include="KContent\js\scripts.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1759,12 +1755,13 @@
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="CustomFilter\AuthFiter.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Utils\AppUserAndRoleProvider.cs" />
     <Compile Include="ViewModels\AppUserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
@@ -1948,6 +1945,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\MyCart.cshtml" />
     <Content Include="Views\Home\CompleteCart.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\_SampleProducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

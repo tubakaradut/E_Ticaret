@@ -24,6 +24,8 @@ namespace DataAccess.Context
         public DbSet<Order> Orders  { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+         public DbSet<AppUserRole> AppUserRoles { get; set; }
+        public DbSet<AppUserAndRole> AppUserAndRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,7 +34,11 @@ namespace DataAccess.Context
             modelBuilder.Configurations.Add(new SupplierMap());
             modelBuilder.Configurations.Add(new SubCategoryMap());
             modelBuilder.Configurations.Add(new AppUserMap());
+
+
+            //modelBuilder.Entity<AppUserAndRole>().HasKey(x => new { x.AppUserId, x.AppUserRoleId });
             base.OnModelCreating(modelBuilder);
+          
         }
     }
 }

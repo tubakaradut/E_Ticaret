@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin, member, moderator")]
     public class CategoryController : Controller
     {
         CategoryService categoryService = new CategoryService();

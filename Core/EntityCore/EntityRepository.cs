@@ -17,7 +17,7 @@ namespace CoreMap.EntityCore
 
         public Guid ID { get; set; }
 
-        public int MasterId { get; set; }//opsiyonel
+        public int? MasterId { get; set; }//opsiyonel
         public Status Status { get; set; } //verinin durumu
 
 

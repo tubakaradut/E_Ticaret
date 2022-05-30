@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin, member, moderator")]
     public class HomeController : Controller
     {
         public ActionResult Index()

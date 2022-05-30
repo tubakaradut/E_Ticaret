@@ -5,6 +5,7 @@ using Service.Concrete;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MVC.Controllers
 {
@@ -26,6 +27,7 @@ namespace MVC.Controllers
 
                 if (loginVM != null)
                 {
+                    FormsAuthentication.SetAuthCookie(appUser.Username, true);
                     Session["user"] = appUser;
                     return RedirectToAction("index", "Home");
                 }
@@ -33,12 +35,12 @@ namespace MVC.Controllers
                 else
                 {
                     TempData["error"] = "Kullanıcı Bilgileri Hatalı veya Hesabınızı Aktive Değil!";
-                    return View();
+                    return View(loginVM);
                 }
             }
             else
             {
-                return View();
+                return View(loginVM);
             }
         }
 
@@ -53,6 +55,7 @@ namespace MVC.Controllers
             if (ModelState.IsValid)
             {
                 AppUser getAppUser = appUserService.GetDefault(x => x.Email == appUserVM.Email && x.IsActive).FirstOrDefault();
+
                 if (getAppUser != null)
                 {
                     TempData["error"] = "Aynı mail adresine ait başka bir kayıt bulunmaktadır!";
@@ -64,8 +67,8 @@ namespace MVC.Controllers
                 appUser.Email = appUserVM.Email;
                 appUser.Password = appUserVM.Password;
                 appUser.Username = appUserVM.Username;
-                appUser.Firstname = appUser.Firstname;
-                appUser.Lastname = appUser.Lastname;
+                appUser.Firstname = appUserVM.Firstname;
+                appUser.Lastname = appUserVM.Lastname;
 
 
 
@@ -73,6 +76,7 @@ namespace MVC.Controllers
                 var result = appUserService.Add(appUser);
 
                 TempData["info"] = result;
+
                 //Mailsender
                 MailSender.SendEmail(appUserVM.Email, "Üyelik Aktivayon", $"üyeliğinizi aktif hale getirebilmek için linki tıklayın https://localhost:44365/Login/Activation/" + appUser.ActivationCode);
                 return RedirectToAction("index", "login");
