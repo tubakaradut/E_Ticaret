@@ -13,7 +13,6 @@
         {
             AutomaticMigrationsEnabled = true;
         }
-
         protected override void Seed(DataAccess.Context.ProjeContext context)
         {
 
@@ -190,5 +189,6 @@
             //    context.SaveChanges();
             //}
         }
+
     }
 }
