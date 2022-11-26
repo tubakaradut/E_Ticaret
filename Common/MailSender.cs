@@ -16,7 +16,7 @@ namespace Common
 
             //Sender
             MailMessage sender = new MailMessage();
-            sender.From = new MailAddress("yzl3156yzl@gmail.com", "YZL3156");
+            sender.From = new MailAddress("tuba--18@hotmail.com", "tubik");
             sender.To.Add(email);
             sender.Subject = subject;
             sender.Body = message;
@@ -24,7 +24,7 @@ namespace Common
 
             //Smtp
             SmtpClient smtp = new SmtpClient();
-            smtp.Credentials = new NetworkCredential("yzl3156yzl@gmail.com", "Yzl3156--");
+            smtp.Credentials = new NetworkCredential("tuba--18@hotmail.com", "tubik");
             smtp.Port = 587;
             smtp.Host = "smtp.gmail.com";
             smtp.EnableSsl = true;

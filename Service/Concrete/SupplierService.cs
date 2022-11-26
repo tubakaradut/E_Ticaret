@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Service.Concrete
 {
- public    class SupplierService:BaseService<Supplier>
+ public class SupplierService:BaseService<Supplier>
     {
     }
 }
