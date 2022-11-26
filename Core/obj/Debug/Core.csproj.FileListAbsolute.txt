@@ -1,0 +1,12 @@
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\Core.dll.config
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\Core.dll
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\Core.pdb
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\EntityFramework.dll
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\EntityFramework.xml
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\obj\Debug\Core.csproj.AssemblyReference.cache
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\obj\Debug\Core.csproj.CopyComplete
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\obj\Debug\Core.dll
+C:\Users\Tuba\Desktop\jfsf\E_Ticaret\Core\obj\Debug\Core.pdb
